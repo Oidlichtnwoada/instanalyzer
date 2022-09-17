@@ -107,9 +107,13 @@ def get_children(element: WebElement) -> list[WebElement]:
     return element.find_elements(By.XPATH, './child::*')
 
 
+def scroll_down_on_element(element: WebElement) -> None:
+    pass
+
+
 def get_list_elements(driver: Chrome, expected_elements: int, list_name: str) -> set[str]:
     while len(get_children(get_element(driver, list_name))) != expected_elements:
-        pass  # scroll down
+        scroll_down_on_element(get_element(driver, list_name))
     return set(map(get_profile_name_from_list_element, get_children(get_element(driver, list_name))))
 
 
