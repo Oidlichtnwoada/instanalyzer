@@ -1,2 +1,2 @@
-selenium==4.4.3
+instagrapi==1.16.30
 typed-argument-parser==1.7.2
