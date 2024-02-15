@@ -1,11 +1,12 @@
+import os
+
 import instagrapi.types
 import tap
-import os
 
 
 class ScriptArgumentParser(tap.Tap):
-    username: str = os.getenv('INSTAGRAM_USERNAME', '')
-    password: str = os.getenv('INSTAGRAM_PASSWORD', '')
+    username: str = os.getenv("INSTAGRAM_USERNAME", "")
+    password: str = os.getenv("INSTAGRAM_PASSWORD", "")
 
 
 def get_username_and_password() -> tuple[str, str]:
@@ -14,4 +15,7 @@ def get_username_and_password() -> tuple[str, str]:
 
 
 def get_username(user: instagrapi.types.UserShort) -> str:
-    return user.username
+    username: str | None = user.username
+    if username is None:
+        raise RuntimeError
+    return username
