@@ -1,6 +1,0 @@
-instagrapi
-typed-argument-parser
-Pillow
-black
-mypy
-pytest

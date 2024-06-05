@@ -1,0 +1,19 @@
+[tool.poetry]
+name = "instanalyzer"
+version = "1.0.0"
+description = ""
+authors = ["Oidlichtnwoada <42490916+Oidlichtnwoada@users.noreply.github.com>"]
+readme = "README.md"
+
+[tool.poetry.dependencies]
+python = "^3.12"
+instagrapi = "2.1.2"
+typed-argument-parser = "1.10.0"
+pillow = "10.3.0"
+black = "24.4.2"
+mypy = "1.10.0"
+pytest = "8.2.2"
+
+[build-system]
+requires = ["poetry-core"]
+build-backend = "poetry.core.masonry.api"
