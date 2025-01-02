@@ -1,6 +1,5 @@
-import os
-
 import instagrapi.types
+import os
 import tap
 
 
