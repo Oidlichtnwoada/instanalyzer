@@ -1,20 +1,29 @@
-import instagrapi
+import json
+import pathlib
 
-from instanalyzer.utils import get_username, get_username_and_password
 
+def get_data_base_path() -> pathlib.Path:
+    return pathlib.Path(__file__).parent.parent / "data"
+
+def get_followers() -> set[str]:
+    with open(get_data_base_path() / "followers_1.json") as file:
+        data = json.load(file)
+    ids = set([x["string_list_data"][0]["value"] for x in data])
+    return ids
+
+
+def get_followings() -> set[str]:
+    with open(get_data_base_path() / "following.json") as file:
+        data = json.load(file)
+    ids = set([x["title"] for x in data["relationships_following"]])
+    return ids
 
 def main() -> None:
-    username, password = get_username_and_password()
-    client = instagrapi.Client()
-    client.login(username, password, relogin=True)
-    user_id = client.user_id_from_username(username)
-    followers = client.user_followers_v1(user_id)
-    following = client.user_following_v1(user_id)
-    follower_username_set = set(map(get_username, followers))
-    following_username_set = set(map(get_username, following))
-    common_core = following_username_set.intersection(follower_username_set)
-    not_following_back = following_username_set - follower_username_set
-    not_followed_back = follower_username_set - following_username_set
+    followers = get_followers()
+    followings = get_followings()
+    not_following_back = followings - followers
+    not_followed_back = followers - followings
+    common_core = followers & followings
     print(f"not following back: {not_following_back}")
     print(f"not followed back: {not_followed_back}")
     print(f"common core: {common_core}")

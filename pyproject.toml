@@ -2,17 +2,11 @@
 name = "instanalyzer"
 version = "1.0.0"
 description = ""
-authors = ["Oidlichtnwoada <42490916+Oidlichtnwoada@users.noreply.github.com>"]
+authors = []
 readme = "README.md"
 
 [tool.poetry.dependencies]
-python = "3.13.3"
-instagrapi = "2.1.5"
-typed-argument-parser = "1.10.1"
-pillow = "11.1.0"
-black = "24.10.0"
-mypy = "1.14.1"
-pytest = "8.3.4"
+python = "3.13.11"
 
 [build-system]
 requires = ["poetry-core"]
